@@ -1,0 +1,46 @@
+<link  rel="stylesheet"  href="style.css">
+<div id="task">
+<input class="new" id="new" placeholder="add new task">
+<button class="add" id="add" onclick="add()">Add</button>
+<div class="box" id="box">
+<input class="new1">
+<button class="edit" onclick="edit(event)">edit</button>
+<img class="img" src="delete.png" onclick="deletetask(event)">
+</div>
+</div>
+<script>
+    var input1=document.getElementById("new")
+    var add1=document.getElementById("add")
+    var box1=document.getElementById("box")
+    var task=document.getElementById("task")
+    function add(){
+        var input2=document.querySelector(".new1")
+        if(input2.value==""){
+            input2.value=input1.value
+        }
+        else{
+            var newbox=document.createElement("div")
+            newbox.className="box"
+            newbox.innerHTML = `<input class="new1" value="${input1.value}">
+           <button class="edit" onclick="edit(event)">edit</button>
+           <img class="img" src="delete.png" onclick="deletetask(event)">`
+           task.appendChild(newbox)
+           input1.value=""
+
+        }
+     
+     
+    }
+    function edit(event){
+        var input2=event.target.previousElementSibling
+        input2.focus()
+        
+    }
+    function deletetask(event){
+        event.target.parentElement.remove()
+    }
+    
+
+
+
+</script>
